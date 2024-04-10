@@ -2,7 +2,7 @@
 import { CourseType } from "@/gql/graphql";
 import { JSCharting } from "jscharting-react";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Charting = ({
   courses,
@@ -13,6 +13,7 @@ const Charting = ({
 }) => {
   const router = useRouter();
   const chartRef = useRef(null);
+  const [hoveredNode, setHoveredNode] = useState(null);
   let points = courses.map((course) => {
     return {
       name: course.node.name,
@@ -32,6 +33,8 @@ const Charting = ({
       },
     };
   });
+
+  
 
   console.log(points);
   var highlightColor = "#544040",
@@ -54,12 +57,15 @@ const Charting = ({
       color: "#fffff6",
       pointSelection: selectionMode,
       defaultPoint: {
+        color:"white",
         /* Default line styling for connector lines. */
         connectorLine: {
           color: "#b6b6b6",
           width: 1,
         },
+        
         outline: { color: "#cbcbcb", width: 1 },
+        
         states: {
           /* The select state is used by points that are clicked. */
           select: {
@@ -72,6 +78,9 @@ const Charting = ({
             opacity: 1,
             outline_color: mutedHighlightColor,
           },
+          hover:{
+            transform:"rotateZ(180deg)"
+          },
         },
         annotation: { padding: [5, 10], margin: 5 },
       },
@@ -82,19 +91,21 @@ const Charting = ({
           label: {
             text:
               "" +
-              "<span style='font-size: 12px; color: #747c72;'>%name</span>" +
+              "<span  style='font-size: 12px; color: white;'>%name</span>" +
               "<br/>",
-
             autoWrap: false,
           },
 
           connectorLine_color: "#747c72",
           annotation: {
             padding: 9,
-            corners: ["cut", "square", "cut", "square"],
+            corners: ["round"],
             margin: [15, 5, 10, 0],
+            height:80,
+            width:170,
           },
-          color: "#dcead7",
+          
+          color: "rgb(0, 128, 128)",
           tooltip: "<b>%name</b>",
         },
         points: points || [],
@@ -103,11 +114,14 @@ const Charting = ({
   };
 
   return (
-    <JSCharting
-      className="h-[500%] bg-transparent"
+    
+      <JSCharting
+      className="h-[500%] bg-primary "
       ref={chartRef}
       options={attr}
+    
     />
+    
   );
 };
 

@@ -3,7 +3,7 @@ import Banner from "@/components/Banner";
 import Animation from "@/components/Animation"
 import CoursesSlider from "@/components/CoursesSlider";
 import LearnPhysics from "@/components/LearnPhysics";
-import PracticeQuiz from "@/components/PracticeQuiz";
+import Questions from "@/components/Questions";
 import ResearchSlider from "@/components/ResearchSlider";
 import WhoFor from "@/components/WhoFor";
 import { ChallengeType, CourseType, ResearchTaskType } from "@/gql/graphql";
@@ -43,10 +43,8 @@ const HomePage = async () => {
       <Banner />
       <WhoFor />
       <div className="flex flex-col text-textColor bg-primary w-full justify-center items-center h-full py-10">
-        <CoursesSlider
-          courses={data.allCourses.edges.map((edge) => edge.node)}
-        />
-        
+        <CoursesSlider/>
+        <Questions/>
         <ResearchSlider
           researchTasks={data.allResearchTasks.edges.map((edge) => edge.node)}
         />

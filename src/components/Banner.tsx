@@ -15,7 +15,7 @@ const Banner = () => {
               </p>
               <Link
                 href="/auth/login"
-                className="bg-textColor text-primary px-8 py-2 rounded-md mt-4"
+                className="bg-textColor hover:bg-accent text-primary px-8 py-2 rounded-md mt-4"
               >
                 Get Started
               </Link>

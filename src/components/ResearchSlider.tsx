@@ -2,7 +2,7 @@
 import { ResearchTaskType } from "@/gql/graphql";
 import Image from "next/image";
 import Link from "next/link";
-import Carousel from "react-multi-carousel";
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -35,24 +35,15 @@ const ResearchSlider = ({
         <h2 className="font-bold uppercase text-xl">TOP RESEARCh PAPERS</h2>
         {/* <div className="border-secondary border-t-2 flex-auto mx-5 relative mt-3"></div> */}
       </div>
-      <div className="flex py-6">
-        <Carousel
-          responsive={responsive}
-          autoPlay={true}
-          infinite={true}
-          autoPlaySpeed={5500}
-          swipeable={true}
-          draggable={true}
-          ssr={true}
-          containerClass="w-full "
-        >
+      <div className="flex justify-start items-center flex-wrap mx-16 py-7 px-8">
+        
           {
             researchTasks &&
             researchTasks
             .map((task, i) => (
               <div
                 key={i}
-                className=" w-full py-6 px-4 h-full aspect-video  p-1"
+                className="w-full  md:w-1/2 lg:w-1/3 h-56 px-2 py-2"
               >
 
                 <Link
@@ -85,7 +76,7 @@ const ResearchSlider = ({
                 </Link>
               </div>
             ))}
-        </Carousel>
+        
       </div>
     </div>
   );

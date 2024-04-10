@@ -67,7 +67,7 @@ const DrawTree = ({
         <div className="bg-accent rounded max-w-xs mx-auto flex w-full">
           <Link
             href={`/learn/?topic=${hierarchy?.branch?.name}`}
-            className="rounded  flex flex-col w-full justify-center items-center"
+            className="rounded flex flex-col w-full justify-center items-center"
           >
             <div
               className="w-96 bg-accent rounded aspect-video flex flex-col 
